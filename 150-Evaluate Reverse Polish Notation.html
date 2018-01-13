@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    var evalRPN = function (tokens) {
+//        var index = 0
+//        for (var i = 0; i < tokens.length; i++) {
+//            switch (tokens[i]) {
+//                case '+':
+//                    tokens[index - 2] = parseInt(tokens[index - 2]) + parseInt(tokens[index - 1]);
+//                    tokens.splice(index - 1, 2)
+//                    console.log(tokens)
+//                    index = index - 1
+//                    i = i - 2
+//                    break;
+//                case '-':
+//                    tokens[index - 2] = parseInt(tokens[index - 2]) - parseInt(tokens[index - 1]);
+//                    tokens.splice(index - 1, 2)
+//                    index = index - 1
+//                    i = i - 2
+//                    break;
+//                case '*':
+//                    tokens[index - 2] = parseInt(tokens[index - 2]) * parseInt(tokens[index - 1]);
+//                    tokens.splice(index - 1, 2)
+//                    console.log(tokens)
+//                    index = index - 1
+//                    i = i - 2
+//                    break;
+//                case '/':
+//                    tokens[index - 2] = parseInt(tokens[index - 2]) / parseInt(tokens[index - 1]);
+//                    tokens.splice(index - 1, 2)
+//                    index = index - 1
+//                    i = i - 2
+//                    break;
+//                default:
+//                    index++;
+//                    break;
+//            }
+//        }
+//        return parseInt(tokens[0])
+//    };
+    var calc = function (p1, p2, operator) {
+        switch (operator) {
+            case '+':
+                return p2 + p1;
+                break;
+            case '-':
+                return p2 - p1;
+                break;
+            case '*':
+                return p2 * p1;
+                break;
+            case '/':
+                return p2 / p1;
+                break;
+        }
+    }
+    var isOperator = function (item) {
+        var operators = ['+', '-', '*', '/']
+        return operators.indexOf(item) > -1
+    }
+    var evalRPN = function (tokens) {
+        var stack = []
+        var top = -1
+        for (var i = 0; i < tokens.length; i++) {
+            var item = tokens[i]
+            if (isOperator(item)) {
+                var p1 = stack[top--]
+                var p2 = stack[top--]
+                stack[++top] = parseInt(calc(p1, p2, item))
+                console.log(stack)
+            } else {
+                stack[++top] = parseInt(item)
+            }
+        }
+        return stack[0]
+    }
+    console.log(evalRPN(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]))
+</script>
+</body>
+</html>
