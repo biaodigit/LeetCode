@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * 滑动窗口
+     * @param s
+     * @param nums
+     * @returns {*}
+     */
+    const minSubArrayLen = function (s, nums) {
+        let l = 0,
+            r = -1,
+            len = nums.length,
+            size = nums.length + 1,
+            sum = 0;
+        while (l < len) {
+            if (r <= len - 1 && sum < s) {
+                sum += nums[++r]
+            } else {
+                sum -= nums[l++]
+            }
+
+            if (sum >= s) {
+                size = Math.min(size, r - l + 1)
+            }
+        }
+        if (size === nums.length + 1) {
+            return 0
+        }
+        return size
+    };
+    console.log(minSubArrayLen(7, [2, 3, 1, 2, 4, 3]))
+</script>
+</body>
+</html>
