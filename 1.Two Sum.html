@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const twoSum = function (nums, target) {
+        /**
+         * 查找表
+         * @type {Map}
+         */
+        let m = new Map(),
+            len = nums.length;
+        for (let i = 0; i < len; i++) {
+            if (m.has(nums[i])) {
+                return [m.get(nums[i]), i]
+            }
+            m.set((target - nums[i]), i)
+        }
+    };
+</script>
+</body>
+</html>
