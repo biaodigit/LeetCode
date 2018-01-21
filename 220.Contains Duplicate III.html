@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const containsNearbyAlmostDuplicate = function (nums, k, t) {
+        if (!nums || nums.length < 2) return false;
+
+        let indices = [];
+        
+        for (i = 0; i < nums.length; ++i) {
+            indices[i] = i;
+        }
+        
+        indices = indices.sort(function (a,b) {
+            return nums[a] - nums[b]
+        })
+
+        let i, j;
+        for (i = 0; i < nums.length; ++i) {
+            let x = indices[i];
+
+            for (j = i + 1; j < nums.length; ++j) {
+                let y = indices[j];
+                let diff = nums[y] - nums[x];
+                let di = Math.abs(x-y);
+
+                if (diff > t) break;
+
+                if (di <= k) return true;
+            }
+        }
+
+        return false
+    };
+    console.log(containsNearbyAlmostDuplicate([1, 3, 1], 2, 1))
+</script>
+</body>
+</html>
