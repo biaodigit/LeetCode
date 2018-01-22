@@ -13,6 +13,7 @@
      * @returns {*}
      */
     const minSubArrayLen = function (s, nums) {
+        // 在数组中找出最短长度的子数组，使子数组中的和大于等于S
         let l = 0,
             r = -1,
             len = nums.length,
@@ -25,8 +26,9 @@
                 sum -= nums[l++]
             }
 
-            if (sum >= s) {
+            if(sum >= s){
                 size = Math.min(size, r - l + 1)
+                console.log(size)
             }
         }
         if (size === nums.length + 1) {
@@ -34,7 +36,7 @@
         }
         return size
     };
-    console.log(minSubArrayLen(7, [2, 3, 1, 2, 4, 3]))
+    console.log(minSubArrayLen(11, [1, 2, 3, 4, 5]))
 </script>
 </body>
 </html>

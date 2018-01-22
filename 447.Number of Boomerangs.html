@@ -19,20 +19,22 @@
                 let dis = getDistance(points[i], points[j]);
                 map.set(dis, (map.get(dis) || 0) + 1)
             }
-            console.log(map)
+
             for (let value of map.values()) {
                 res += value * (value - 1)
             }
         }
 
         return res;
-    };
+    }
 
     function getDistance(i, j) {
         return Math.pow(i[0] - j[0], 2) + Math.pow(i[1] - j[1], 2)
     }
 
     console.log(numberOfBoomerangs([[0, 0], [1, 0], [2, 0]]))
+
+
 
 </script>
 </body>

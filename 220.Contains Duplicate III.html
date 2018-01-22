@@ -9,28 +9,24 @@
     const containsNearbyAlmostDuplicate = function (nums, k, t) {
         if (!nums || nums.length < 2) return false;
 
-        let indices = [];
-        
-        for (i = 0; i < nums.length; ++i) {
-            indices[i] = i;
+        let res = [];
+
+        for (let i = 0; i < nums.length; i++) {
+            res[i] = i;
         }
-        
-        indices = indices.sort(function (a,b) {
+
+        res = res.sort((a, b) => {
             return nums[a] - nums[b]
         })
 
-        let i, j;
-        for (i = 0; i < nums.length; ++i) {
-            let x = indices[i];
+        for (let i = 0; i < nums.length; i++) {
+            let x = res[i];
+            for (let j = i + 1; j < nums.length; j++) {
+                let y = res[j];
+                let num = nums[y] - nums[x];
+                let size = Math.abs(x - y);
 
-            for (j = i + 1; j < nums.length; ++j) {
-                let y = indices[j];
-                let diff = nums[y] - nums[x];
-                let di = Math.abs(x-y);
-
-                if (diff > t) break;
-
-                if (di <= k) return true;
+                if (size <= k && num <= t) return true;
             }
         }
 

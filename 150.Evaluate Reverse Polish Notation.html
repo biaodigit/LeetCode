@@ -6,9 +6,10 @@
 </head>
 <body>
 <script>
-//    var evalRPN = function (tokens) {
-//        var index = 0
-//        for (var i = 0; i < tokens.length; i++) {
+    // 逆波兰式 II
+//    let evalRPN = function (tokens) {
+//        let index = 0
+//        for (let i = 0; i < tokens.length; i++) {
 //            switch (tokens[i]) {
 //                case '+':
 //                    tokens[index - 2] = parseInt(tokens[index - 2]) + parseInt(tokens[index - 1]);
@@ -43,7 +44,8 @@
 //        }
 //        return parseInt(tokens[0])
 //    };
-    var calc = function (p1, p2, operator) {
+    let calc = function (p1, p2, operator) {
+        
         switch (operator) {
             case '+':
                 return p2 + p1;
@@ -59,20 +61,19 @@
                 break;
         }
     }
-    var isOperator = function (item) {
-        var operators = ['+', '-', '*', '/']
+    let isOperator = function (item) {
+        let operators = ['+', '-', '*', '/']
         return operators.indexOf(item) > -1
     }
-    var evalRPN = function (tokens) {
-        var stack = []
-        var top = -1
-        for (var i = 0; i < tokens.length; i++) {
-            var item = tokens[i]
+    let evalRPN = function (tokens) {
+        let stack = []
+        let top = -1
+        for (let i = 0; i < tokens.length; i++) {
+            let item = tokens[i]
             if (isOperator(item)) {
-                var p1 = stack[top--]
-                var p2 = stack[top--]
+                let p1 = stack[top--]
+                let p2 = stack[top--]
                 stack[++top] = parseInt(calc(p1, p2, item))
-                console.log(stack)
             } else {
                 stack[++top] = parseInt(item)
             }
