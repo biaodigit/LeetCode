@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<script>
-    // 逆波兰式 II
+// 逆波兰式 II
 //    let evalRPN = function (tokens) {
 //        let index = 0
 //        for (let i = 0; i < tokens.length; i++) {
@@ -44,43 +36,39 @@
 //        }
 //        return parseInt(tokens[0])
 //    };
-    let calc = function (p1, p2, operator) {
-        
-        switch (operator) {
-            case '+':
-                return p2 + p1;
-                break;
-            case '-':
-                return p2 - p1;
-                break;
-            case '*':
-                return p2 * p1;
-                break;
-            case '/':
-                return p2 / p1;
-                break;
+let calc = function (p1, p2, operator) {
+    switch (operator) {
+        case '+':
+            return p2 + p1;
+            break;
+        case '-':
+            return p2 - p1;
+            break;
+        case '*':
+            return p2 * p1;
+            break;
+        case '/':
+            return p2 / p1;
+            break;
+    }
+}
+let isOperator = function (item) {
+    let operators = ['+', '-', '*', '/']
+    return operators.indexOf(item) > -1
+}
+let evalRPN = function (tokens) {
+    let stack = []
+    let top = -1
+    for (let i = 0; i < tokens.length; i++) {
+        let item = tokens[i]
+        if (isOperator(item)) {
+            let p1 = stack[top--]
+            let p2 = stack[top--]
+            stack[++top] = parseInt(calc(p1, p2, item))
+        } else {
+            stack[++top] = parseInt(item)
         }
     }
-    let isOperator = function (item) {
-        let operators = ['+', '-', '*', '/']
-        return operators.indexOf(item) > -1
-    }
-    let evalRPN = function (tokens) {
-        let stack = []
-        let top = -1
-        for (let i = 0; i < tokens.length; i++) {
-            let item = tokens[i]
-            if (isOperator(item)) {
-                let p1 = stack[top--]
-                let p2 = stack[top--]
-                stack[++top] = parseInt(calc(p1, p2, item))
-            } else {
-                stack[++top] = parseInt(item)
-            }
-        }
-        return stack[0]
-    }
-    console.log(evalRPN(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]))
-</script>
-</body>
-</html>
+    return stack[0]
+}
+console.log(evalRPN(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]))

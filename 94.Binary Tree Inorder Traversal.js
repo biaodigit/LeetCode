@@ -1,23 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>后序遍历</title>
-</head>
-<body>
-<script>
-    /**
+ /**
      * Definition for a binary tree node.
      * function TreeNode(val) {
  *     this.val = val;
  *     this.left = this.right = null;
  * }
      */
-    /**
-     * @param {TreeNode} root
-     * @return {number[]}
-     */
-    var postorderTraversal = (root) => {
+    const inorderTraversal = function (root) {
         /**
          * 递归
          * @type {Array}
@@ -26,8 +14,8 @@
 //        const traversal = (node) => {
 //            if(node){
 //                traversal(node.left)
-//                traversal(node.right)
 //                res.push(node.val)
+//                traversal(node.right)
 //            }
 //        }
 //        traversal(root)
@@ -38,21 +26,18 @@
          */
         let stack = [],
             res = [];
-        if (root) {
-            stack.push(root)
-        }
+        stack.push(root)
         while (stack.length) {
+            while (root) {
+                root = root.left
+                stack.push(root)
+            }
+            if (stack.length === 0) {
+                break;
+            }
             let temp = stack.pop()
             res.push(temp.val)
-            if (temp.left) {
-                stack.push(root.left)
-            }
-            if (temp.right) {
-                stack.push(root.right)
-            }
+            root = temp.right
         }
-        return res.reverse()
-    }
-</script>
-</body>
-</html>
+        return res
+    };
