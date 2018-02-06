@@ -31,12 +31,10 @@ const inorderTraversal = function (root) {
             stack.push(root)
             root = root.left
         }
-        if (stack.length === 0) {
-            break;
-        }
-        let temp = stack.pop()
-        res.push(temp.val)
-        root = temp.right
+        if (stack.length === 0) break
+        let node = stack.pop()
+        res.push(node.val)
+        root = root.right
     }
     return res
 };

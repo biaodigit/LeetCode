@@ -1,4 +1,4 @@
-let solveNQueens = function (n) {
+let solveNQueens = (n) => {
     let res = [],
         row = [],
         col = [],
@@ -13,7 +13,7 @@ let solveNQueens = function (n) {
         dia2[i] = false
     }
 
-    let generateBoard = function (n, row) {
+    let generateBoard = (n, row) => {
         let board = []
         for (let i = 0; i < n; i++) {
             board[i] = ""
@@ -28,11 +28,12 @@ let solveNQueens = function (n) {
         }
         return board
     }
-    let putQueen = function (n, index, row) {
-        if (index === n) {
+    let putQueen = (n, index, row) => {
+        if (n === index) {
             res.push(generateBoard(n, row))
             return
         }
+
         for (let i = 0; i < n; i++) {
             if (!col[i] && !dia1[index + i] && !dia2[index - i + n - 1]) {
                 row.push(i)
@@ -46,7 +47,6 @@ let solveNQueens = function (n) {
                 row.pop()
             }
         }
-
     }
     putQueen(n, 0, row)
     return res
