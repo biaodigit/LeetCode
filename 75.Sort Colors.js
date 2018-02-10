@@ -1,4 +1,4 @@
-let sortColors = function (nums) {
+const sortColors = function (nums) {
     /**
      * 计数排序
      * @param nums
@@ -25,23 +25,22 @@ let sortColors = function (nums) {
     /**
      * 三路快排方式
      */
-    var zero = 0,
-        i = 0,
-        two = nums.length - 1,
-        mid = 1;
-    while (i <= two) {
-        if (nums[i] < mid) {
-            swap(nums, zero++, i++)
-        } else if (nums[i] === mid) {
+    let zero = -1,
+        two = nums.length,
+        v = 1,
+        i = 0;
+    while (i < two) {
+        if (nums[i] < v) {
+            swap(nums, ++zero, i++)
+        } else if (nums[i] === v) {
             i++
         } else {
-            swap(nums, two--, i)
+            swap(nums, --two, i)
         }
     }
-    console.log(nums)
 };
-var swap = function (arr, cur, next) {
-    var p = arr[cur];
+const swap = function (arr, cur, next) {
+    let p = arr[cur];
     arr[cur] = arr[next]
     arr[next] = p
 }
