@@ -1,10 +1,7 @@
 const minimumTotal = function (triangle) {
-    let result = [],
-        len = triangle.length,
-        sz = triangle[len - 1].length;
-    for (let i = 0; i < sz + 1; i++) {
-        result[i] = 0
-    }
+    let len = triangle.length,
+        sz = triangle[len - 1].length,
+        result = new Array(sz + 1).fill(0)
     for (let i = len - 1; i >= 0; i--) {
         let temp = triangle[i]
         for (let j = 0; j < temp.length; j++) {
