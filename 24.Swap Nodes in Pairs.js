@@ -1,8 +1,8 @@
-const swapPairs = function(head) {
+const swapPairs = function (head) {
     let dummyHead = new ListNode(-1)
     dummyHead.next = head
     let p = dummyHead
-    while(p.next && p.next.next){
+    while (p.next && p.next.next) {
         let node1 = p.next,
             node2 = p.next.next,
             next = node2.next

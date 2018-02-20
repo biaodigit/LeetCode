@@ -20,7 +20,6 @@ const minSubArrayLen = function (s, nums) {
 
         if (sum >= s) {
             size = Math.min(size, r - l + 1)
-            console.log(size)
         }
     }
     if (size === nums.length + 1) {
@@ -28,4 +27,3 @@ const minSubArrayLen = function (s, nums) {
     }
     return size
 };
-console.log(minSubArrayLen(11, [1, 2, 3, 4, 5]))

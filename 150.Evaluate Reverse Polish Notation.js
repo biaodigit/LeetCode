@@ -1,42 +1,4 @@
-// 逆波兰式 II
-//    let evalRPN = function (tokens) {
-//        let index = 0
-//        for (let i = 0; i < tokens.length; i++) {
-//            switch (tokens[i]) {
-//                case '+':
-//                    tokens[index - 2] = parseInt(tokens[index - 2]) + parseInt(tokens[index - 1]);
-//                    tokens.splice(index - 1, 2)
-//                    console.log(tokens)
-//                    index = index - 1
-//                    i = i - 2
-//                    break;
-//                case '-':
-//                    tokens[index - 2] = parseInt(tokens[index - 2]) - parseInt(tokens[index - 1]);
-//                    tokens.splice(index - 1, 2)
-//                    index = index - 1
-//                    i = i - 2
-//                    break;
-//                case '*':
-//                    tokens[index - 2] = parseInt(tokens[index - 2]) * parseInt(tokens[index - 1]);
-//                    tokens.splice(index - 1, 2)
-//                    console.log(tokens)
-//                    index = index - 1
-//                    i = i - 2
-//                    break;
-//                case '/':
-//                    tokens[index - 2] = parseInt(tokens[index - 2]) / parseInt(tokens[index - 1]);
-//                    tokens.splice(index - 1, 2)
-//                    index = index - 1
-//                    i = i - 2
-//                    break;
-//                default:
-//                    index++;
-//                    break;
-//            }
-//        }
-//        return parseInt(tokens[0])
-//    };
-let calc = function (p1, p2, operator) {
+let calc = (p1, p2, operator) => {
     switch (operator) {
         case '+':
             return p2 + p1;
@@ -51,12 +13,12 @@ let calc = function (p1, p2, operator) {
             return p2 / p1;
             break;
     }
-}
-let isOperator = function (item) {
+};
+let isOperator = (item) => {
     let operators = ['+', '-', '*', '/']
     return operators.indexOf(item) > -1
-}
-let evalRPN = function (tokens) {
+};
+let evalRPN = (tokens) => {
     let stack = []
     let top = -1
     for (let i = 0; i < tokens.length; i++) {
@@ -70,5 +32,5 @@ let evalRPN = function (tokens) {
         }
     }
     return stack[0]
-}
+};
 console.log(evalRPN(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]))
