@@ -5,7 +5,7 @@ const uniquePaths = (m, n) => {
         path[i] = 1
     }
     for (let j = 0; j < m; j++) {
-        paths[j] = path
+        paths[j] = path.slice(0)
     }
     for (let i = 1; i < m; i++) {
         for (let j = 1; j < n; j++) {
