@@ -1,13 +1,12 @@
 let exist = function (board, word) {
     let m = board.length,
         n = board[0].length,
-        len = word.length
-    word = word.split("");
+        len = word.length;
     let searchWord = function (board, index, row, col) {
         if (row < 0 || col < 0 || row >= m || col >= n || board[row][col] !== word[index] || index >= len) return false
 
-        board[row][col] = '#'
-        index++
+        board[row][col] = '#';
+        index++;
         if (index === len) return true
 
         if (searchWord(board, index, row - 1, col)) return true
@@ -20,7 +19,7 @@ let exist = function (board, word) {
 
         board[row][col] = word[--index]
 
-        return false;
+        return false
     }
     for (let i = 0; i < m; i++) {
         for (let j = 0; j < n; j++) {
@@ -28,4 +27,4 @@ let exist = function (board, word) {
         }
     }
     return false
-};
+}
