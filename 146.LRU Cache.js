@@ -1,10 +1,11 @@
-var ListNode = function (key, val) {
+const ListNode = function (key, val) {
     this.prev = null;
     this.next = null;
     this.val = val;
     this.key = key;
-}
-var LRUCache = function (capacity) {
+};
+
+const LRUCache = function (capacity) {
     this.head = new ListNode(-1, -1);
     this.tail = new ListNode(-1, -1);
     this.head.next = this.tail;
@@ -14,10 +15,6 @@ var LRUCache = function (capacity) {
     this.map = new Map();
 };
 
-/**
- * @param {number} key
- * @returns {number}
- */
 LRUCache.prototype.get = function (key) {
     let node = this.map.get(key);
     if (node) {
@@ -27,6 +24,7 @@ LRUCache.prototype.get = function (key) {
         return -1;
     }
 };
+
 LRUCache.prototype.put = function (key, value) {
     let node = this.map.get(key);
     if (!node) {
@@ -49,17 +47,17 @@ LRUCache.prototype.attachToHead = function (node) {
     node.next.prev = node;
     this.head.next = node;
     node.prev = this.head;
-}
+};
 
 LRUCache.prototype.moveToHead = function (node) {
     node.prev.next = node.next;
     node.next.prev = node.prev;
     this.attachToHead(node);
-}
+};
 
 LRUCache.prototype.removeLast = function () {
     let last = this.tail.prev;
     last.prev.next = this.tail;
     this.tail.prev = last.prev;
     this.map.delete(last.key);
-}
+};
