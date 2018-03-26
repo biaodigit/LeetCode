@@ -1,23 +1,18 @@
-var detectCycle = function(head) {
-    if(!head || !head.next) return null
-
-    var list1 = head,
-        list2 = head,
-        isCycle = false;
-    while(list1 !== null && list2 !== null){
-        list1 = list1.next
-        if(list2.next == null) return null
-        list2 = list2.next.next
-        if(list1.val === list2.val){
-            isCycle = true;
-            break;
+let detectCycle = (head) => {
+    if(!head) return null
+    let fast = head,
+        slow = head;
+    while(fast && fast.next){
+        fast = fast.next.next
+        slow = slow.next
+        if(slow === fast){
+            slow = head
+            while(slow !== fast){
+                slow = slow.next
+                fast = fast.next
+            }
+            return slow
         }
     }
-    if(!isCycle) return null
-    list1 = head
-    while(list1 !== list2){
-        list1 = list1.next
-        list2 = list2.next
-    }
-    return list1
+    return null
 };
