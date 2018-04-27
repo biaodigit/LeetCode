@@ -1,27 +1,15 @@
-let convert = function (s, numRows) {
-    let res = [],
-        row = -1,
-        col = 0,
-        k = 0,
-        strArr = [];
-    for (let i = 0; i < numRows; i++) {
-        res[i] = []
-    }
-    for (let i = 0; i < s.length; i++) {
-        if (row < numRows - 1 && k === 0) {
-            res[++row][col] = s[i]
-        } else if (row === numRows - 1 || k === 1) {
-            res[--row][++col] = s[i]
-            k = 1
-            if (row === 1) {
-                row = -1
-                k = 0
-                col++
+let convert = function (s, nRows) {
+    if (nRows <= 1) return s
+    let res = ""
+    let distance = 2 * nRows - 2;
+    for (let i = 0; i < nRows; i++) {
+        for (let j = i; j < s.length; j += distance) {
+            res += s[j]
+            let temp = j + distance - 2 * i
+            if (i !== 0 && i !== nRows - 1 && temp < s.length) {
+                res += s[temp]
             }
         }
     }
-    for (let i = 0; i < res.length; i++) {
-        strArr = strArr.concat(res[i])
-    }
-    console.log(strArr.join(""))
+    return res
 };

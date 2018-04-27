@@ -1,13 +1,13 @@
-let detectCycle = (head) => {
-    if(!head) return null
+const detectCycle = (head) => {
+    if (!head) return null
     let fast = head,
         slow = head;
-    while(fast && fast.next){
+    while (fast && fast.next) {
         fast = fast.next.next
         slow = slow.next
-        if(slow === fast){
+        if (slow === fast) {
             slow = head
-            while(slow !== fast){
+            while (slow !== fast) {
                 slow = slow.next
                 fast = fast.next
             }
