@@ -34,7 +34,7 @@ const inorderTraversal = function (root) {
         if (stack.length === 0) break
         let node = stack.pop()
         res.push(node.val)
-        root = root.right
+        root = node.right
     }
     return res
 };
