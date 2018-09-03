@@ -1,13 +1,14 @@
 const longestPalindrome = (s) => {
     if (s.length === 1) return s
     let start = 0, maxLen = 0;
-    const extendPalindrome = (s, l, k) => {
-        while (l >= 0 && k < s.length && s.charAt(l) === s.charAt(k)) {
-            l--, k++
+    const extendPalindrome = (s, l, r) => {
+        while (l >= 0 && r < s.length && s.charAt(l) === s.charAt(r)) {
+            l--;
+            r++;
         }
-        if (maxLen < k - l - 1) {
-            start = l + 1
-            maxLen = k - l - 1
+        if (maxLen < r - l - 1) {
+            start = l + 1;
+            maxLen = r - l - 1;
         }
     }
     for (let i = 0; i < s.length - 1; i++) {

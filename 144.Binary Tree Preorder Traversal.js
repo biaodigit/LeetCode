@@ -4,7 +4,7 @@ const preorderTraversal = (root) => {
      * @type {Array}
      */
 //        let res = [];
-//        const traversal = (node) => {
+//        const traversal = (root) => {
 //            res.push(root.val)
 //            traversal(root.left)
 //            traversal(root.right)

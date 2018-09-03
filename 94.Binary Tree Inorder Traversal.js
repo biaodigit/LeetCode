@@ -1,6 +1,6 @@
 /**
- * Definition for a binary tree node.
- * function TreeNode(val) {
+ * Definition for a binary tree root.
+ * function Treeroot(val) {
  *     this.val = val;
  *     this.left = this.right = null;
  * }
@@ -10,16 +10,16 @@ const inorderTraversal = function (root) {
      * 递归
      * @type {Array}
      */
-//        let res = []
-//        const traversal = (node) => {
-//            if(node){
-//                traversal(node.left)
-//                res.push(node.val)
-//                traversal(node.right)
-//            }
-//        }
-//        traversal(root)
-//        return res
+    // let res = []
+    // const traversal = (root) => {
+    //     if (root) {
+    //         traversal(root.left)
+    //         res.push(root.val)
+    //         traversal(root.right)
+    //     }
+    // }
+    // traversal(root)
+    // return res
     /**
      * 栈模拟递归
      * @type {Array}
@@ -32,9 +32,10 @@ const inorderTraversal = function (root) {
             root = root.left
         }
         if (stack.length === 0) break
-        let node = stack.pop()
-        res.push(node.val)
-        root = node.right
+        let root = stack.pop()
+        res.push(root.val)
+        root = root.right
     }
     return res
+
 };

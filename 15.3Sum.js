@@ -13,8 +13,8 @@ let threeSum = (nums) => {
         while (j < k) {
             let b = nums[j],
                 c = nums[k],
-                val = a + b + c;
-            if (val === 0) {
+                sum = a + b + c;
+            if (sum === 0) {
                 result.push([a, b, c]);
                 j++;
                 k--;
@@ -24,7 +24,7 @@ let threeSum = (nums) => {
                 while (nums[k] === c) {
                     k--
                 }
-            } else if (val > 0) {
+            } else if (sum > 0) {
                 k--
             } else {
                 j++
