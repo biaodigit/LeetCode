@@ -1,22 +1,20 @@
 let permute = function (nums) {
-    let res = []
-    if (!nums.length) return res
-    let used = {}
-    let generatePermutation = function (nums, index, p) {
-        if (index === nums.length) {
-            res.push(p.slice(0))
+    let res = [];
+    if (!nums.length) return res;
+    let generatePermutation = function (nums, p) {
+        if (nums.length === 0) {
+            res.push(p.slice(0));
             return
         }
         for (let i = 0; i < nums.length; i++) {
-            if (!used[nums[i]]) {
-                p.push(nums[i])
-                used[nums[i]] = true
-                generatePermutation(nums, index + 1, p)
-                p.pop()
-                used[nums[i]] = false
-            }
+            let num = nums.splice(i,1)[0];
+            p.push(num);
+            generatePermutation(nums,p);
+            p.pop();
+            nums.splice(i,0,num);
+
         }
-    }
-    generatePermutation(nums, 0, [])
+    };
+    generatePermutation(nums, []);
     return res
 };
