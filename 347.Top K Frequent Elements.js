@@ -1,25 +1,9 @@
-const topKFrequent = function(nums, k) {
-    let map = {},
-        arr = [],
-        count = 0
-    for (let i = 0; i < nums.length; i++){
-        if(map[nums[i]] === undefined){
-            map[nums[i]] = count
-            arr.push([nums[i],0])
-            count++
-        }else{
-            arr[map[nums[i]]][1]++;
-        }
+const topKFrequent = function (nums, k) {
+    let map = new Map();
+    for (let num of nums) {
+        if (!map.get(num)) map.set(num, 1);
+        map.set(num, map.get(num) + 1)
     }
-
-    arr.sort(function(a, b){
-        return b[1] - a[1];
-    });
-
-    let res = [];
-    for (let i = 0; i < k; i++){
-        res.push(arr[i][0]);
-    }
-
-    return res;
+    let res = [...map.keys()].sort((a, b) => map.get(b) - map.get(a));
+    return res.slice(0, k);
 };
