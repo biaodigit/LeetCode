@@ -21,6 +21,6 @@ let mergeKLists = (lists) => {
     res.forEach((val) => {
         cur.next = new ListNode(val);
         cur = cur.next;
-    })
+    });
     return dummyHead.next;
 };

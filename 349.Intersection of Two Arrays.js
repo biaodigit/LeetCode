@@ -5,10 +5,13 @@
  */
 const intersection = (nums1, nums2) => {
     // 求合集 I
-    let record = new Set(nums1),
-        res = [];
-    for (let i = 0; i < nums2.length; i++) {
-        if (record.has(nums2[i]) && res.indexOf(nums2[i]) === -1) {
+    let [set, res] = [{}, []];
+    for(let i=0;i<nums1.length;i++){
+        set[nums1[i]] = true
+    }
+    for(let i=0;i<nums2.length;i++){
+        if(set[nums2[i]]){
+            set[nums2[i]] = false;
             res.push(nums2[i])
         }
     }

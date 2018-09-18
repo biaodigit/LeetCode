@@ -1,8 +1,7 @@
 const ListNode = function (key, val) {
-    this.prev = null;
-    this.next = null;
     this.val = val;
     this.key = key;
+    this.prev = this.next = null;
 };
 
 const LRUCache = function (capacity) {
@@ -15,7 +14,11 @@ const LRUCache = function (capacity) {
     this.map = new Map();
 };
 
-LRUCache.prototype.get = function (key) {
+/**
+ * @param {number} key
+ * @return {number}
+ */
+LRUCache.prototype.get = function(key) {
     let node = this.map.get(key);
     if (node) {
         this.moveToHead(node);
@@ -25,7 +28,12 @@ LRUCache.prototype.get = function (key) {
     }
 };
 
-LRUCache.prototype.put = function (key, value) {
+/**
+ * @param {number} key
+ * @param {number} value
+ * @return {void}
+ */
+LRUCache.prototype.put = function(key, value) {
     let node = this.map.get(key);
     if (!node) {
         node = new ListNode(key, value);
@@ -61,3 +69,10 @@ LRUCache.prototype.removeLast = function () {
     this.tail.prev = last.prev;
     this.map.delete(last.key);
 };
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * var obj = Object.create(LRUCache).createNew(capacity)
+ * var param_1 = obj.get(key)
+ * obj.put(key,value)
+ */

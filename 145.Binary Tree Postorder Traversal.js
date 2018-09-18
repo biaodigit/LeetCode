@@ -28,20 +28,25 @@ const postorderTraversal = (root) => {
      * 栈模拟递归
      * @type {Array}
      */
+    if (!root) return [];
     let stack = [],
-        res = [];
-    if (root) {
-        stack.push(root)
-    }
+        res = [],
+        cur = root,
+        right = null;
+    stack.push(cur);
     while (stack.length) {
-        let temp = stack.pop()
-        res.push(temp.val)
-        if (temp.left) {
-            stack.push(root.left)
+        while (cur.left) {
+            stack.push(cur.left);
+            cur = cur.left;
         }
-        if (temp.right) {
-            stack.push(root.right)
+        cur = stack.pop();
+        while(!cur.right || cur.right === right){
+            res.push(cur);
+            right = cur;
+            cur = stack.pop();
         }
+        stack.push(cur)
+        cur = cur.right
     }
-    return res.reverse()
+    return res
 }

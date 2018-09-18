@@ -3,10 +3,10 @@ const map = {
     '(': ')',
     '[': ']',
     '{': '}'
-}
+};
 
 const isValid = (s) => {
-    let stack = []
+    let stack = [];
     for (let key of s) {
         if (map[key]) {
             stack.push(map[key])
@@ -17,5 +17,5 @@ const isValid = (s) => {
         }
     }
     return stack.length === 0
-}
-console.log(isValid('{[()]}'))
+};
+console.log(isValid('{[()]}'));
