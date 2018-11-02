@@ -1,17 +1,23 @@
 const removeElements = function (head, val) {
-    let virtualHead = new ListNode(null);
-    virtualHead.next = head
-    let cur = virtualHead;
-    while (cur.next) {
-        if (cur.next.val === val) {
-            let del = cur.next
-            cur.next = del.next
-            del = null
+    while (head !== null && head.val === val) {
+        let delNode = head;
+        head = head.next;
+        delNode.next = null
+    }
+
+    if (head === null) {
+        return null
+    }
+
+    let prev = head;
+    while (prev.next !== null) {
+        if (prev.next.val === val) {
+            let delNode = prev.next;
+            prev.next = delNode.next;
+            delNode.next = null
         } else {
-            cur = cur.next
+            prev = prev.next
         }
     }
-    let ret = virtualHead.next
-    virtualHead = null
-    return ret
+    return head
 };
