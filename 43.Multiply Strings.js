@@ -11,9 +11,9 @@ let multiply = function (num1, num2) {
             mul = +num1.charAt(i) * num2.charAt(j);
             a = i + j;
             b = i + j + 1;
-            sum = (!!ret[b] ? ret[b] : 0) + mul;
-            ret[a] = (!!ret[a] ? ret[a] : 0) + parseInt(sum / 10);
-            ret[b] = sum % 10;
+            sum = (ret[b] ? ret[b] : 0) + mul;
+            ret[a] = (ret[a] ? ret[a] : 0) + parseInt(sum / 10);
+            ret[b] = sum % 10
         }
     }
 

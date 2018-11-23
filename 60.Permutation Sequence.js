@@ -8,11 +8,12 @@ let getPermutation = function (n, k) {
     for (let i = 1; i <= n; i++) {
         arr.push(i)
     }
-    sum = arr.reduce((pre, curr) => pre * curr)
+
+    sum = arr.reduce((pre, curr) => pre * curr);
 
     for (let i = n; i >= 1; i--) {
         sum /= i;
-        ret.push(arr.splice(Math.floor(pos / sum), 1)[0])
+        ret.push(arr.splice(Math.floor(pos / sum), 1)[0]);
         pos %= sum
     }
     return ret.join('')

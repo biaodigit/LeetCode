@@ -11,7 +11,6 @@ let combine = function (n, k) {
             generateCombination(n, k, i + 1, arr)
             arr.pop()
         }
-        return
     }
     generateCombination(n, k, 1, [])
     return res

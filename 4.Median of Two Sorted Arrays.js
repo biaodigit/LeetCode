@@ -4,7 +4,7 @@ const findMedianSortedArrays = (nums1, nums2) => {
         len = nums1.length + nums2.length,
         half = Math.floor(len / 2) + 1;
     for (let k = 0; k < half; k++) {
-        s = f
+        s = f;
         if (i >= nums1.length) {
             f = nums2[j++]
         } else if (j >= nums2.length) {
