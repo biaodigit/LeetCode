@@ -7,10 +7,8 @@ const deleteDuplicates = function (head) {
                 curr = curr.next;
             }
             list.next = curr.next;
-            list = curr;
-        } else {
-            list = list.next;
         }
+        list = list.next;
 
     }
     return head;
