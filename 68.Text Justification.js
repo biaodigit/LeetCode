@@ -47,7 +47,7 @@ let justifyLines = (lines, maxWidth) => {
 
         push(line, '')
     }
-    push(lines[lines.length - 1], ' ');
+    push(lines[lines.length - 1], '')
 
     return justified
 };

@@ -5,13 +5,16 @@ let nextPermutation = function (nums) {
 
     let left = idx - 1,
         right = nums.length - 1;
-    while(nums[left] >= nums[right]) right--;
+
+    while (nums[left] >= nums[right]) right--;
+
     if (left >= 0 && right >= 0) {
         [nums[left], nums[right]] = [nums[right], nums[left]]
     }
+
     left = idx;
     right = nums.length - 1;
-    while(left < right){
+    while (left < right) {
         [nums[left], nums[right]] = [nums[right], nums[left]];
         left++;
         right--;
