@@ -1,15 +1,21 @@
-let invertTree = function(root) {
-    if(!root){
+let invertTree = function (root) {
+    if (!root) {
         return null
     }
-    let node = root.left
-    root.left = root.right
-    root.right = node
-    if(root.left){
-        invertTree(root.left)
+    let stack = [],
+        temp,
+        node;
+
+    stack.push(root);
+
+    while (stack.length) {
+        node = stack.pop();
+        if (node.left) stack.push(node.left);
+        if (node.right) stack.push(node.right);
+        temp = node.left;
+        node.left = node.right;
+        node.right = temp
     }
-    if(root.right){
-        invertTree(root.right)
-    }
-    return root
+
+    return root;
 };

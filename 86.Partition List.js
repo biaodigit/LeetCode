@@ -16,7 +16,7 @@ let partition = function (head, x) {
             previous.next = current
         }
 
-        previous = current;
+        previous = current
         current = current === null ? null : current.next
     }
     temp.next = head;

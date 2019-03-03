@@ -19,3 +19,21 @@ const sortArrayByParityII = function (A) {
     }
     return A
 };
+
+let isBuf = (Sn) => {
+};
+
+let firstBug = (arr) => {
+    let l = 0,
+        r = arr.length - 1,
+        mid, bug;
+    while (l < r) {
+        mid = l + ((r - l) >> 1);
+        if (!isBuf(mid)) {
+            bug = mid;
+            r = mid - 1
+        } else {
+            l = mid + 1
+        }
+    }
+}
