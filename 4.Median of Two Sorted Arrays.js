@@ -1,24 +1,45 @@
-const findMedianSortedArrays = (nums1, nums2) => {
-    let i = 0, j = 0,
-        s = 0, f = 0,
-        len = nums1.length + nums2.length,
-        half = Math.floor(len / 2) + 1;
-    for (let k = 0; k < half; k++) {
-        s = f;
-        if (i >= nums1.length) {
-            f = nums2[j++]
-        } else if (j >= nums2.length) {
-            f = nums1[i++]
-        } else if (nums1[i] < nums2[j]) {
-            f = nums1[i++]
-        } else {
-            f = nums2[j++]
-        }
+const findMedianSortedArrays = (A, B) => {
+    let m = A.length,
+        n = B.length;
+
+    if (m > n) {
+        [A, B] = [B, A]
+        let temp = m;
+        m = n;
+        n = temp;
     }
 
-    if (len % 2 === 0) {
-        return (s + f) / 2
-    } else {
-        return f
+    let iMin = 0, iMax = m, half = (m + n + 1) >> 1, i, j;
+
+    while (iMin < iMax) {
+        i = (iMin + iMax) >> 1;
+        j = half - i;
+        if (i < iMax && B[j - 1] > A[i]) {
+            iMin = i + 1
+        } else if (i > iMin && B[j] < A[i - 1]) {
+            iMax = i - 1
+        } else {
+            let maxLeft = 0;
+            if (i === 0) {
+                maxLeft = B[j - 1]
+            } else if (j === 0) {
+                maxLeft = A[i - 1]
+            } else {
+                maxLeft = Math.max(A[i - 1], B[j - 1])
+            }
+
+            if ((m + n) % 2 === 1) return maxLeft;
+
+            let minRight = 0;
+            if (i === m) {
+                minRight = B[j]
+            } else if (j === n) {
+                minRight = A[i]
+            } else {
+                minRight = Math.min(A[i], B[j])
+            }
+
+            return (maxLeft + minRight) / 2
+        }
     }
 };
