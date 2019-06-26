@@ -11,7 +11,7 @@ const findMedianSortedArrays = (A, B) => {
 
     let iMin = 0, iMax = m, half = (m + n + 1) >> 1, i, j;
 
-    while (iMin < iMax) {
+    while (iMin <= iMax) {
         i = (iMin + iMax) >> 1;
         j = half - i;
         if (i < iMax && B[j - 1] > A[i]) {
@@ -43,3 +43,5 @@ const findMedianSortedArrays = (A, B) => {
         }
     }
 };
+
+console.log(findMedianSortedArrays([1,3],[2]))
