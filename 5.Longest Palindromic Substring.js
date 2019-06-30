@@ -1,19 +1,34 @@
 const longestPalindrome = (s) => {
-    if (s.length === 1) return s
-    let start = 0, maxLen = 0;
-    const extendPalindrome = (s, l, r) => {
-        while (l >= 0 && r < s.length && s.charAt(l) === s.charAt(r)) {
-            l--;
-            r++;
+    let str = '';
+    for (let i = 0; i < s.length; i++) {
+        str += `#${s.charAt(i)}`;
+    }
+    str += '#';
+
+    let slen = str.length,
+        p = Array(slen),
+        mostR = 0,
+        cId = 0,
+        palLen = 1,
+        palStr = s.substring(0, 1);
+
+    for (let i = 0; i < slen; i++) {
+        p[i] = i < mostR ? Math.min(p[2 * cId - i], mostR - i) : 1;
+
+        while (i - p[i] >= 0 && i + p[i] < slen && str.charAt(i - p[i]) === str.charAt(i + p[i])) {
+            p[i]++
         }
-        if (maxLen < r - l - 1) {
-            start = l + 1;
-            maxLen = r - l - 1;
+
+        if (i + p[i] - 1 > mostR) {
+            mostR = i + p[i] - 1;
+            cId = i
+        }
+
+        if (p[i] - 1 > palLen) {
+            palLen = p[i] - 1;
+            palStr = str.substring(i - p[i] + 1, i + p[i]).replace(/#/g, '')
         }
     }
-    for (let i = 0; i < s.length - 1; i++) {
-        extendPalindrome(s, i, i)
-        extendPalindrome(s, i, i + 1)
-    }
-    return s.substring(start, start + maxLen)
+
+    return palStr
 };
