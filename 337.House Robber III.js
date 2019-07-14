@@ -13,7 +13,6 @@ const _rob = function (root, values) {
 
     let moreMoney = _rob(root.left, values) + _rob(root.right, values);
 
-    console.log(`money:${money},moremoney:${moreMoney}`)
     money = Math.max(money, moreMoney);
     values.set(root, money);
 
