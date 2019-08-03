@@ -1,12 +1,14 @@
 const minimumTotal = function (triangle) {
-    let len = triangle.length,
-        sz = triangle[len - 1].length,
-        result = new Array(sz + 1).fill(0)
-    for (let i = len - 1; i >= 0; i--) {
-        let temp = triangle[i]
-        for (let j = 0; j < temp.length; j++) {
-            result[j] = Math.min(result[j], result[j + 1]) + temp[j]
+    if (!triangle.length) return 0;
+
+    if (triangle.length === 1) return triangle[0][0];
+
+    for (let i = triangle.length - 2; i >= 0; i--) {
+        for (let j = 0; j < triangle[i].length; j++) {
+           triangle[i][j] += Math.min(triangle[i+1][j],triangle[i+1][j+1])
         }
     }
-    return result[0]
+
+    return triangle[0][0]
 };
+
