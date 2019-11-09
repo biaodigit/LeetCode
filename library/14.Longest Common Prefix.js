@@ -8,5 +8,7 @@ let longestCommonPrefix = function (strs) {
         }
         k++
     }
+
     return pre
 };
+

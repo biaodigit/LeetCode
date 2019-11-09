@@ -13,7 +13,7 @@ const longestPalindrome = (s) => {
         palStr = s.substring(0, 1);
 
     for (let i = 0; i < slen; i++) {
-        p[i] = i < mostR ? Math.min(p[2 * cId - i], mostR - i) : 1;
+        p[i] = i < mostR ? Math.min(p[2 * cId - i], mostR - i + 1) : 1;
 
         while (i - p[i] >= 0 && i + p[i] < slen && str.charAt(i - p[i]) === str.charAt(i + p[i])) {
             p[i]++

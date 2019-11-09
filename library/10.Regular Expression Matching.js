@@ -5,8 +5,8 @@ let isMatch = function (s, p) {
     }
     dp[0][0] = true;
     for (let i = 1; i < p.length; i++) {
-        if (p.charAt(i) === "*" && dp[0][i - 1]) {
-            dp[0][i + 1] = true
+        if (p.charAt(i) === "*") {
+            dp[0][i + 1] = dp[0][i - 1]
         }
     }
 

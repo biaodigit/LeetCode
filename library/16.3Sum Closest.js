@@ -20,9 +20,9 @@ let threeSumClosest = (nums, target) => {
                 distance = Math.abs(target - sum)
                 result = sum
             }
-            if(sum < target){
+            if (sum < target) {
                 j++
-            }else{
+            } else {
                 k--
             }
         }

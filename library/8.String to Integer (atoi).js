@@ -1,4 +1,4 @@
-let myAtoi = function (str) {
+let myAtoi = (str) => {
     let i = 0,
         res = 0,
         isNegative = false,
