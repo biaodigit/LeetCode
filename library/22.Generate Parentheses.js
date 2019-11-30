@@ -1,13 +1,17 @@
 const generateParenthesis = (n) => {
-    let res = [];
-    generate('', n, n, res);
-    return res;
-};
+    let dp = [];
+    dp[0] = [''];
+    dp[1] = ['()'];
+    for (let i = 2; i <= n; i++) {
+        dp[i] = [];
+        for (let j = 0; j < i; j++) {
+            for(let p of dp[j]){
+                for(let q of dp[i-j-1]){
+                    dp[i].push(`(${p})${q}`)
+                }
+            }
+        }
+    }
 
-const generate = (str, l, r, res) => {
-    if(l > r) return;
-    if (!l && !r) res.push(str);
-    if (l) generate(str + '(', l - 1, r, res);
-    if (r) generate(str + ')', l, r - 1, res);
+    return dp[n]
 };
-
