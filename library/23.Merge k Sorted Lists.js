@@ -6,21 +6,35 @@
  * }
  */
 let mergeKLists = (lists) => {
-    let res = [],
-        list;
-    for (let i = 0; i < lists.length; i++) {
-        list = lists[i];
-        while (list) {
-            res.push(list.val);
-            list = list.next;
+    if (!lists || !lists.length) return null;
+    let left = 0,
+        right = lists.length;
+    while (right) {
+        while (left < right) {
+            lists[left] = merge(lists[left], lists[right]);
+            left++;
+            right--;
         }
+        left = 0;
     }
-    res.sort((a, b) => a - b);
-    let dummyHead = new ListNode(-1),
-        cur = dummyHead;
-    res.forEach((val) => {
-        cur.next = new ListNode(val);
-        cur = cur.next;
-    });
-    return dummyHead.next;
+
+    return lists[0]
+};
+
+let merge = (list1, list2) => {
+    let dummyHead = new ListNode(0);
+    let cur = dummyHead;
+    while (list1 && list2) {
+        if (list1.val < list2.val) {
+            cur.next = list1;
+            list1 = list1.next
+        } else {
+            cur.next = list2;
+            list2 = list2.next
+        }
+        cur = cur.next
+    }
+    if (list1) cur.next = list1;
+    if (list2) cur.next = list2;
+    return dummyHead.next
 };

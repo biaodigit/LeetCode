@@ -1,13 +1,13 @@
 const generate = (numRows) => {
     if (!numRows) return [];
-    const result = [[1]];
-    for (let i = 1; i < numRows; i++) {
-        const arr = [1];
-        const lastArr = result[i - 1];
-        for (let j = 1; j <= i; j++) {
-            arr[j] = lastArr[j] ? lastArr[j] + lastArr[j - 1] : lastArr[j - 1]
+    let dp = [];
+    for (let i = 0; i < numRows; i++) {
+        dp[i] = [];
+        dp[i][0] = 1;
+        for (let j = 1; j < i; j++) {
+            dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j]
         }
-        result.push(arr)
+        dp[i][i] = 1
     }
-    return result
+    return dp
 };

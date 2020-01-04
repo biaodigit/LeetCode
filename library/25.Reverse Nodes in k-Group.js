@@ -5,27 +5,27 @@ let reverseKGroup = function (head, k) {
         size++;
         cur = cur.next;
     }
-    let preHead = new ListNode(-1),
+    let dummyHead = new ListNode(-1),
         nums = Math.floor(size / k);
-    preHead.next = head;
-    let prev = preHead,
-        start = preHead.next;
+    dummyHead.next = head;
+    let prev = dummyHead,
+        start = dummyHead.next;
     while (nums) {
         let count = k,
-            reverseTail = start,
+            tail = start,
             p = start,
             q = start.next;
         while (--count) {
-            let temp = q.next;
+            let next = q.next;
             q.next = p;
             p = q;
-            q = temp;
+            q = next;
         }
         prev.next = p;
         start = q;
-        reverseTail.next = start;
-        prev = reverseTail;
+        tail.next = start;
+        prev = tail;
         nums--;
     }
-    return preHead.next
+    return dummyHead.next
 };
