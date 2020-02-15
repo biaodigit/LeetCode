@@ -32,4 +32,5 @@
 - [27.移除元素](https://biaodigit.github.io/LeetCode/0027/)<br>
 - [28.实现 strStr()](https://biaodigit.github.io/LeetCode/0028/)<br>
 - [29.两数相除](https://biaodigit.github.io/LeetCode/0029/)<br>
-- [30.串联所有单词的子串](https://biaodigit.github.io/LeetCode/0030/)
+- [30.串联所有单词的子串](https://biaodigit.github.io/LeetCode/0030/)<br>
+- [31.下一个排列](https://biaodigit.github.io/LeetCode/0031/)<br>
