@@ -32,10 +32,9 @@ const inorderTraversal = function (root) {
             root = root.left
         }
         if (stack.length === 0) break
-        let root = stack.pop()
+        root = stack.pop()
         res.push(root.val)
         root = root.right
     }
     return res
-
 };
