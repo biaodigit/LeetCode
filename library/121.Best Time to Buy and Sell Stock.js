@@ -1,8 +1,8 @@
 const maxProfit = function (prices) {
-    let maxCur = 0, maxVal = 0;
-    for (let i = 1, len = prices.length; i < len; i++) {
-        maxCur = Math.max(maxCur += prices[i] - prices[i - 1], 0)
-        maxVal = Math.max(maxVal, maxCur)
+    let oneBuy = Infinity, oneSell = 0;
+    for (let i = 0; i < prices.length; i++) {
+        oneBuy = Math.min(prices[i], oneBuy)
+        oneSell = Math.max(oneSell, prices[i] - oneBuy)
     }
-    return maxVal
+    return oneSell
 };
