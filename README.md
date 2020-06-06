@@ -1,7 +1,5 @@
 ## LeetCode题解
 
-> 由于本人近期着手准备跳槽的事情，因此会断更一小段时间，并不是太监，确定下家后继续更新 —— 2020.4.4
-
 ##  题解序列
 - [1.两数之和](https://biaodigit.github.io/LeetCode/0001/)<br>
 - [2.两数相加](https://biaodigit.github.io/LeetCode/0002/)<br>
