@@ -32,3 +32,4 @@
 - [29.两数相除](https://biaodigit.github.io/LeetCode/0029/)<br>
 - [30.串联所有单词的子串](https://biaodigit.github.io/LeetCode/0030/)<br>
 - [31.下一个排列](https://biaodigit.github.io/LeetCode/0031/)<br>
+- [32.最长有效括号](https://biaodigit.github.io/LeetCode/0032/)<br>
